@@ -1,0 +1,121 @@
+{
+  "info": {
+    "name": "Employee Management System API",
+    "description": "Complete CRUD API collection for Employee Management System built with Spring Boot + MySQL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Create Employee (Success)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/employees",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Arjun Sharma\",\n  \"email\": \"arjun.sharma@company.com\",\n  \"department\": \"Engineering\",\n  \"designation\": \"Senior Software Engineer\",\n  \"salary\": 95000.00\n}"
+        }
+      }
+    },
+    {
+      "name": "2. Create Employee (Validation Error - Missing Fields)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/employees",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"\",\n  \"email\": \"not-an-email\",\n  \"department\": \"\",\n  \"designation\": \"Developer\",\n  \"salary\": -500\n}"
+        }
+      }
+    },
+    {
+      "name": "3. Create Employee (Duplicate Email)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/employees",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Another Person\",\n  \"email\": \"arjun.sharma@company.com\",\n  \"department\": \"HR\",\n  \"designation\": \"Manager\",\n  \"salary\": 70000.00\n}"
+        }
+      }
+    },
+    {
+      "name": "4. Get All Employees",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/employees"
+      }
+    },
+    {
+      "name": "5. Get Employee by ID (Found)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/employees/1"
+      }
+    },
+    {
+      "name": "6. Get Employee by ID (Not Found)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/employees/9999"
+      }
+    },
+    {
+      "name": "7. Update Employee (Success)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/employees/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Arjun Sharma Updated\",\n  \"email\": \"arjun.updated@company.com\",\n  \"department\": \"Engineering\",\n  \"designation\": \"Tech Lead\",\n  \"salary\": 120000.00\n}"
+        }
+      }
+    },
+    {
+      "name": "8. Update Employee (Not Found)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/employees/9999",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ghost Employee\",\n  \"email\": \"ghost@company.com\",\n  \"department\": \"IT\",\n  \"designation\": \"Developer\",\n  \"salary\": 60000.00\n}"
+        }
+      }
+    },
+    {
+      "name": "9. Delete Employee (Success)",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/employees/1"
+      }
+    },
+    {
+      "name": "10. Delete Employee (Not Found)",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/employees/9999"
+      }
+    }
+  ]
+}
