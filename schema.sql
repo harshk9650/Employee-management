@@ -51,6 +51,7 @@ CREATE INDEX idx_employee_email ON employee(email);
 -- ============================================================
 
 INSERT INTO employee (name, email, department, designation, salary) VALUES
+('Harsh Kumar',      'harsh.kumar@company.com',     'Engineering', 'Senior Software Engineer',105000.00),
 ('Arjun Sharma',     'arjun.sharma@company.com',   'Engineering',  'Senior Software Engineer', 95000.00),
 ('Priya Verma',      'priya.verma@company.com',    'Engineering',  'Backend Developer',        78000.00),
 ('Rahul Gupta',      'rahul.gupta@company.com',    'HR',           'HR Manager',               65000.00),
